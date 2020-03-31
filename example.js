@@ -5,24 +5,15 @@ const Tidepool = require("./index.js");
 
 const tide = new Tidepool();
 
-tide.spinUp({ keepAlive: true });
+let urchin = tide.spinUp({ keepAlive: true });
 
-console.log(tide.threads);
+function fn() {
+  console.log("hello wurld");
+}
 
-/* make an async request after ~5 seconds after start-up*/
-setTimeout(() => {
-  tide.threads[0].urchin.runFn(async () => {
-    const client = new reqi({ json: true });
-    const res = await client.get("http://example.com");
-    return res.statusCode;
-  });
-}, 5 * 1e3);
+let fn2 = Object.assign({}, { fn });
+console.log(fn2);
 
-/* make am async request ~10 seconds after start-up */
-setTimeout(() => {
-  tide.threads[0].urchin.runFn(async () => {
-    const client = new reqi({ json: true });
-    const res = await client.get("http://example.com");
-    return res.statusCode;
-  });
-}, 10 * 1e3);
+urchin.postMessage({
+  load: "/home/m/code/worker-threads/tidepool/lib/prime.js"
+});
