@@ -1,0 +1,19 @@
+{
+  "name": "tidepool",
+  "version": "0.0.0",
+  "description": "Node.js worker-threads, in a pool!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pool",
+    "worker",
+    "thread"
+  ],
+  "author": "Michael Sterpka <https://github.com/mster>",
+  "license": "MIT",
+  "dependencies": {
+    "reqi": "^1.0.3"
+  }
+}
